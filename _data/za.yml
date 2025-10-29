@@ -25,6 +25,15 @@ pages:
         <br>
         (He rarely feels like it.)
   - left:
+      image: 3.5.png
+    right:
+      text: |
+        This is Za.
+        <br>
+        When the mana cookie supply runs critically low and even he has to venture into the blinding daylight.
+        <br>
+        He's not happy about it."
+  - left:
       image: 4.png
     right:
       text: |
