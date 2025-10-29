@@ -28,11 +28,11 @@ function renderPage(pageIndex) {
 
   flipcardContainer.innerHTML = `
     <div class="flipcard left" id="left-page">
-      ${page.left.image ? `<img src="${page.left.image}" />` : ''}
+      ${page.left.image ? `<img src="${BASE_URL}${page.left.image}" />` : ''}
       <div class="text">${page.left.text || ''}</div>
     </div>
     <div class="flipcard right" id="right-page">
-      ${page.right.image ? `<img src="${page.right.image}" />` : ''}
+      ${page.right.image ? `<img src="${BASE_URL}${page.right.image}" />` : ''}
       <div class="text">${page.right.text || ''}</div>
     </div>
   `;

@@ -15,6 +15,7 @@ title: Flip Cards
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 <script>
+  const BASE_URL = "{{ '/' | relative_url }}";
   const ALL_FLIPCARDS = {{ site.data | jsonify }};
 </script>
 <script src="/assets/js/flipcards.js"></script>
