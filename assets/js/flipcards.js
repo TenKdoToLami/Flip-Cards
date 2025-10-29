@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentData = flipcardData;
     currentData.setFolder = setName;
     currentPage = pageIndex;
+    updateSidebarActive(setName);
     renderPage(currentPage);
   }
 
@@ -88,8 +89,33 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFlipcardSet(decodeURIComponent(setName), pageIndex);
   }
 
-  handleHashChange();
+  function updateSidebarActive(setName) {
+    links.forEach(link => {
+      if (link.dataset.set === setName) link.classList.add('active');
+      else link.classList.remove('active');
+    });
+  }
 
+
+  const sidebar = document.getElementById('sidebar');
+  const sidebarList = sidebar.querySelector('ul');
+
+  function updateSidebarArrows() {
+    const scrollTop = sidebarList.scrollTop;
+    const scrollHeight = sidebarList.scrollHeight;
+    const clientHeight = sidebarList.clientHeight;
+
+    sidebar.classList.toggle('scrollable-top', scrollTop > 0);
+    sidebar.classList.toggle('scrollable-bottom', scrollTop + clientHeight < scrollHeight);
+  }
+
+  updateSidebarArrows();
+
+  sidebarList.addEventListener('scroll', updateSidebarArrows);
+
+
+
+  handleHashChange();
   window.addEventListener('hashchange', handleHashChange);
 
 });
