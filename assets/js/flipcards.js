@@ -3,6 +3,8 @@ const links = document.querySelectorAll('.flipcard-link');
 
 let currentPage = 0;
 let currentData = null;
+let setFolder;
+
 
 links.forEach(link => {
   link.addEventListener('click', (e) => {
@@ -12,7 +14,7 @@ links.forEach(link => {
     // Use the pre-rendered global variable
     const flipcardData = ALL_FLIPCARDS[setName];
     if (!flipcardData) return;
-
+    setFolder = setName;
     renderFlipcards(flipcardData);
   });
 });
@@ -28,11 +30,11 @@ function renderPage(pageIndex) {
 
   flipcardContainer.innerHTML = `
     <div class="flipcard left" id="left-page">
-      ${page.left.image ? `<img src="${BASE_URL}${page.left.image}" />` : ''}
+      ${page.left.image ? `<img src="${BASE_URL}assets/images/${setFolder}/${page.left.image}" />` : ''}
       <div class="text">${page.left.text || ''}</div>
     </div>
     <div class="flipcard right" id="right-page">
-      ${page.right.image ? `<img src="${BASE_URL}${page.right.image}" />` : ''}
+      ${page.right.image ? `<img src="${BASE_URL}assets/images/${setFolder}/${page.right.image}" />` : ''}
       <div class="text">${page.right.text || ''}</div>
     </div>
   `;
@@ -46,5 +48,6 @@ function renderPage(pageIndex) {
     renderPage(currentPage);
   };
 }
+
 
 
