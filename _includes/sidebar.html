@@ -1,7 +1,13 @@
 <div id="sidebar">
-<ul>
-{% for file in site.data %}
-<li><a href="#" class="flipcard-link" data-set="{{ file[0] }}">{{ file[0] }}</a></li>
-{% endfor %}
-</ul>
+  <ul>
+    {% for file in site.data %}
+      {% assign set_key = file[0] %}
+      {% assign set_data = file[1] %}
+      <li>
+        <a href="#{{ set_key }}" class="flipcard-link" data-set="{{ set_key }}">
+          {{ set_data.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>

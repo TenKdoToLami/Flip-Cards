@@ -3,76 +3,101 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipcardContainer = document.getElementById('flipcard-container');
   const links = document.querySelectorAll('.flipcard-link');
 
-  let currentPage = 0;
+  let currentPage = -1; // start at cover
   let currentData = null;
 
-  function loadFlipcardSet(setName) {
+  function loadFlipcardSet(setName, pageIndex = -1) {
     const flipcardData = ALL_FLIPCARDS[setName];
     if (!flipcardData) return;
-    renderFlipcards(flipcardData, setName);
+    currentData = flipcardData;
+    currentData.setFolder = setName;
+    currentPage = pageIndex;
+    renderPage(currentPage);
   }
 
+  // Click on sidebar links
   links.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const setName = link.dataset.set;
-
-      window.location.hash = setName;
-
-      loadFlipcardSet(setName);
+      updateHash(setName, -1); // go to cover
     });
   });
 
-  const initialHash = window.location.hash.slice(1);
-  if (initialHash) {
-    loadFlipcardSet(initialHash);
-  }
-
-  function renderFlipcards(data, setFolder) {
-    currentData = data;
-    currentPage = 0;
-    currentData.setFolder = setFolder;
-    renderPage(currentPage);
-  }
-
+  // Function to render a page
   function renderPage(pageIndex) {
-    const page = currentData.pages[pageIndex];
+    if (!currentData) return;
     const folder = currentData.setFolder;
-
     let html = '';
-    if (pageIndex === 0) {
+
+    // Update hash
+    updateHash(folder, pageIndex);
+
+    if (pageIndex === -1) {
+      // Cover page
       html = `
         <div class="flipcard right" id="right-page">
           ${currentData.cover ? `<img src="${BASE_URL}assets/images/${folder}/${currentData.cover}" />` : ''}
           <div class="text"></div>
         </div>
       `;
-    } else {
-      html = `
-        <div class="flipcard left" id="left-page">
-          ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
-          <div class="text">${page.left.text || ''}</div>
-        </div>
-        <div class="flipcard right" id="right-page">
-          ${page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
-          <div class="text">${page.right.text || ''}</div>
-        </div>
-      `;
-    }
+      flipcardContainer.innerHTML = html;
 
-    flipcardContainer.innerHTML = html;
-
-    if (pageIndex > 0) {
-      document.getElementById('left-page').onclick = () => {
-        if (currentPage > 0) currentPage--;
+      document.getElementById('right-page').onclick = () => {
+        currentPage = 0;
         renderPage(currentPage);
       };
+      return;
     }
 
+    const page = currentData.pages[pageIndex];
+
+    html = `
+      <div class="flipcard left" id="left-page">
+        ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
+        <div class="text">${page.left.text || ''}</div>
+      </div>
+      <div class="flipcard right" id="right-page">
+        ${page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
+        <div class="text">${page.right.text || ''}</div>
+      </div>
+    `;
+    flipcardContainer.innerHTML = html;
+
+    document.getElementById('left-page').onclick = () => {
+      if (currentPage > 0) currentPage--;
+      else if (currentPage === 0) currentPage = -1;
+      renderPage(currentPage);
+    };
     document.getElementById('right-page').onclick = () => {
       if (currentPage < currentData.pages.length - 1) currentPage++;
       renderPage(currentPage);
     };
   }
+
+  // Update the URL hash
+  function updateHash(setName, pageIndex) {
+    const safeSetName = encodeURIComponent(setName);
+    if (pageIndex === -1) {
+      window.location.hash = safeSetName;
+    } else {
+      window.location.hash = `${safeSetName}-${pageIndex}`;
+    }
+  }
+
+  // Handle initial load or hash change
+  function handleHashChange() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const [setName, pageStr] = hash.split('-');
+    const pageIndex = pageStr !== undefined ? parseInt(pageStr, 10) : -1;
+    loadFlipcardSet(decodeURIComponent(setName), pageIndex);
+  }
+
+  // Initial load
+  handleHashChange();
+
+  // Listen for manual hash changes
+  window.addEventListener('hashchange', handleHashChange);
 
 });
