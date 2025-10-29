@@ -120,4 +120,35 @@ document.addEventListener('DOMContentLoaded', () => {
   handleHashChange();
   window.addEventListener('hashchange', handleHashChange);
 
+  const firstBtn = document.getElementById('first-page-btn');
+const prevBtn = document.getElementById('prev-page-btn');
+const nextBtn = document.getElementById('next-page-btn');
+const lastBtn = document.getElementById('last-page-btn');
+
+firstBtn.addEventListener('click', () => {
+  if (!currentData) return;
+  currentPage = 0;
+  renderPage(currentPage);
+});
+
+prevBtn.addEventListener('click', () => {
+  if (!currentData) return;
+  if (currentPage > 0) currentPage--;
+  else if (currentPage === 0) currentPage = -1; // go to cover
+  renderPage(currentPage);
+});
+
+nextBtn.addEventListener('click', () => {
+  if (!currentData) return;
+  if (currentPage < currentData.pages.length - 1) currentPage++;
+  renderPage(currentPage);
+});
+
+lastBtn.addEventListener('click', () => {
+  if (!currentData) return;
+  currentPage = currentData.pages.length - 1;
+  renderPage(currentPage);
+});
+
+
 });
