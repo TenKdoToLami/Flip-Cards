@@ -1,12 +1,101 @@
 title: Za Example
-cover: "cover-za.jpg"
+cover: cover.png
 pages:
   - left:
-      image: "cover-za.jpg"
+      image: 1.png
     right:
-      text: "This is Za. Shadow priest. Slothful. Master of slacking."
+      text: |
+        This is Za.
+        <br>
+        Shadow priest.
+        <br>
+        Slothful.
+        <br>
+        Master of slacking.
   - left:
-      image: "cover-za.jpg"
+      image: 2.png
     right:
-      image: "cover-za.jpg"
-      text: "More text, also over an image. on 5th"
+      text: |
+        Za leads the <Eternal Slackers>, the most slothful guild in all the realms.
+  - left:
+      image: 3.png
+    right:
+      text: |
+        Za channels the shadows… when he feels like it.
+        <br>
+        (He rarely feels like it.)
+  - left:
+      image: 4.png
+    right:
+      text: |
+        This is Za’s shadow priest alt.
+        <br>
+        Slightly more motivated.
+        <br>
+        Slightly.
+  - left:
+      image: 5.png
+    right:
+      text: |
+        And this is his other alt.
+        <br>
+        The one that logs in just to collect transmogs and look pretty.
+        This is, unironically, his most active character.
+  - left:
+      image: 6.png
+    right:
+      text: |
+        This is Az.
+        <br>
+        His discipline priest alter ego.
+        <br>
+        He's everything Za isn't:
+        <br>
+        motivated,
+        <br>
+        shiny,
+        <br>
+        and helpful.
+        <br>
+        Utterly horrifying.
+  - left:
+      image: 7.png
+    right:
+      text: |
+        Za is geared.
+        <br>
+        Very geared.
+        <br>
+        Just don’t ask him to use it.
+  - left:
+      image: 8.png
+    right:
+      text: |
+        This is Ka.
+        Za’s shadow priest friend.
+        <br>
+        They mostly just sit together in silence, judging everyone.
+        <br>
+        It's a very deep friendship.
+  - left:
+      image: 9.png
+    right:
+      text: |
+        Za is incredibly skilled.
+        <br>
+        He once soloed a raid boss because it interrupted his nap and he got... mildly annoyed.
+  - left:
+      image: 10.png
+    right:
+      text: |
+        And so Za slacks on,
+        <br>
+        in shadow,
+        <br>
+        in silence,
+        <br>
+        in style...
+        <br>
+        His work here is done.
+        <br>
+        (He did no work.)
