@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const flipcardContainer = document.getElementById('flipcard-container');
   const links = document.querySelectorAll('.flipcard-link');
 
-  let currentPage = 0;
+  let currentIndex = 0;
   let currentData = null;
 
   links.forEach(link => {
@@ -13,39 +12,52 @@ document.addEventListener('DOMContentLoaded', () => {
       const flipcardData = ALL_FLIPCARDS[setName];
       if (!flipcardData) return;
 
-      renderFlipcards(flipcardData, setName);
+      currentData = flipcardData;
+      currentData.setFolder = setName;
+      currentIndex = 0;
+      renderPage();
     });
   });
 
-  function renderFlipcards(data, setFolder) {
-    currentData = data;
-    currentPage = 0;
-    currentData.setFolder = setFolder;
-    renderPage(currentPage);
-  }
-
-  function renderPage(pageIndex) {
-    const page = currentData.pages[pageIndex];
+  function renderPage() {
+    let html = '';
     const folder = currentData.setFolder;
 
-    flipcardContainer.innerHTML = `
-      <div class="flipcard left" id="left-page">
-        ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
-        <div class="text">${page.left.text || ''}</div>
-      </div>
-      <div class="flipcard right" id="right-page">
-        ${page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
-        <div class="text">${page.right.text || ''}</div>
-      </div>
-    `;
+    if (currentIndex === 0) {
+      html = `
+        <div class="flipcard right" id="right-page">
+          ${currentData.cover ? `<img src="${BASE_URL}assets/images/${folder}/${currentData.cover}" />` : ''}
+          <div class="text"></div>
+        </div>
+      `;
+    } else {
+      const page = currentData.pages[currentIndex - 1]; // pages array starts at 0
+      html = `
+        <div class="flipcard left" id="left-page">
+          ${page.left && page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
+          <div class="text">${(page.left && page.left.text) || ''}</div>
+        </div>
+        <div class="flipcard right" id="right-page">
+          ${page.right && page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
+          <div class="text">${(page.right && page.right.text) || ''}</div>
+        </div>
+      `;
+    }
 
-    document.getElementById('left-page').onclick = () => {
-      if (currentPage > 0) currentPage--;
-      renderPage(currentPage);
-    };
-    document.getElementById('right-page').onclick = () => {
-      if (currentPage < currentData.pages.length - 1) currentPage++;
-      renderPage(currentPage);
-    };
+    flipcardContainer.innerHTML = html;
+
+    if (currentIndex > 0 && document.getElementById('left-page')) {
+      document.getElementById('left-page').onclick = () => {
+        currentIndex--;
+        renderPage();
+      };
+    }
+
+    if (document.getElementById('right-page')) {
+      document.getElementById('right-page').onclick = () => {
+        if (currentIndex < currentData.pages.length) currentIndex++;
+        renderPage();
+      };
+    }
   }
 });

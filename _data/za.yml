@@ -3,11 +3,10 @@ cover: "cover-za.jpg"
 pages:
   - left:
       image: "cover-za.jpg"
-      text: "This text goes OVER the image."
     right:
-      text: "This is a text-only page on the right."
+      text: "This is Za. Shadow priest. Slothful. Master of slacking."
   - left:
       image: "cover-za.jpg"
     right:
       image: "cover-za.jpg"
-      text: "More text, also over an image."
+      text: "More text, also over an image. on 5th"
