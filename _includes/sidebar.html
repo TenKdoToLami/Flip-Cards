@@ -1,0 +1,7 @@
+<div id="sidebar">
+<ul>
+{% for file in site.data %}
+<li><a href="#" class="flipcard-link" data-set="{{ file[0] }}">{{ file[0] }}</a></li>
+{% endfor %}
+</ul>
+</div>

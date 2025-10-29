@@ -1,0 +1,13 @@
+title: Za test
+cover: "/assets/images/za/cover-za.jpg"
+pages:
+  - left:
+      image: "/assets/images/za/cover-za.jpg"
+      text: "This text goes OVER the image."
+    right:
+      text: "This is a text-only page on the right."
+  - left:
+      image: "/assets/images/za/cover-za.jpg"
+    right:
+      image: "/assets/images/za/cover-za.jpg"
+      text: "More text, also over an image."
