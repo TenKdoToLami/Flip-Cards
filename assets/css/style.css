@@ -164,3 +164,23 @@ body {
 	transform: scale(1.05);
 	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
 }
+
+
+.flipcard .page-number {
+	position: absolute;
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(0, 0, 0, 0.0);
+	padding: 2px 5px;
+	border-radius: 3px;
+}
+
+.flipcard.left .page-number {
+	bottom: 5px;
+	left: 5px;
+}
+
+.flipcard.right .page-number {
+	bottom: 5px;
+	right: 5px;
+}

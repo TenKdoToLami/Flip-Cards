@@ -53,10 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="flipcard left" id="left-page">
         ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
         <div class="text">${page.left.text || ''}</div>
+        <div class="page-number">${2*pageIndex + 1}</div>
       </div>
       <div class="flipcard right" id="right-page">
         ${page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
         <div class="text">${page.right.text || ''}</div>
+        <div class="page-number">${2*pageIndex + 2}</div>
       </div>
     `;
     flipcardContainer.innerHTML = html;
