@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipcardContainer = document.getElementById('flipcard-container');
   const links = document.querySelectorAll('.flipcard-link');
 
-  let currentPage = -1; // start at cover
+  let currentPage = -1;
   let currentData = null;
 
   function loadFlipcardSet(setName, pageIndex = -1) {
@@ -15,26 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPage(currentPage);
   }
 
-  // Click on sidebar links
   links.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const setName = link.dataset.set;
-      updateHash(setName, -1); // go to cover
+      updateHash(setName, -1);
     });
   });
 
-  // Function to render a page
   function renderPage(pageIndex) {
     if (!currentData) return;
     const folder = currentData.setFolder;
     let html = '';
 
-    // Update hash
     updateHash(folder, pageIndex);
 
     if (pageIndex === -1) {
-      // Cover page
       html = `
         <div class="flipcard right" id="right-page">
           ${currentData.cover ? `<img src="${BASE_URL}assets/images/${folder}/${currentData.cover}" />` : ''}
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Update the URL hash
   function updateHash(setName, pageIndex) {
     const safeSetName = encodeURIComponent(setName);
     if (pageIndex === -1) {
@@ -85,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Handle initial load or hash change
   function handleHashChange() {
     const hash = window.location.hash.slice(1);
     if (!hash) return;
@@ -94,10 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFlipcardSet(decodeURIComponent(setName), pageIndex);
   }
 
-  // Initial load
   handleHashChange();
 
-  // Listen for manual hash changes
   window.addEventListener('hashchange', handleHashChange);
 
 });
