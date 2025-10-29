@@ -18,4 +18,3 @@ title: Flip Cards
   const BASE_URL = "{{ '/' | relative_url }}";
   const ALL_FLIPCARDS = {{ site.data | jsonify }};
 </script>
-<script src="/assets/js/flipcards.js"></script>
