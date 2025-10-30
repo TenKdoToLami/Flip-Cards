@@ -2,21 +2,21 @@
 
 An interactive flip-book / flashcard style viewer built with Jekyll + client-side JavaScript.
 
-**Live demo**: https://TenKdoToLami.github.io/Flip-Cards/  
+**Live demo**: https://TenKdoToLami.github.io/Flip-Cards/
 
 ---
 
 ## 🚀 Features
 
-- Data-driven flipbooks via `_data/*.yml` files  
-- Supports cover page + dual-page spreads  
-- Sidebar menu to select flipbook sets  
-- Navigation via page click (left/right)  
-- Bottom media controls (first / prev / next / last)  
-- Bookmarkable URLs with hash (`#SetName` or `#SetName-2`)  
-- Page numbers displayed in the flipcards  
-- Responsive design: cards scale to viewport  
-- Dark / book-style UI (customizable via CSS)  
+- Data-driven flipbooks via `_data/*.yml` files
+- Supports cover page + dual-page spreads
+- Sidebar menu to select flipbook sets
+- Navigation via page click (left/right)
+- Bottom media controls (first / prev / next / last)
+- Bookmarkable URLs with hash (`#SetName` or `#SetName-2`)
+- Page numbers displayed in the flipcards
+- Responsive design: cards scale to viewport
+- Dark / book-style UI (customizable via CSS)
 
 ---
 
@@ -67,7 +67,7 @@ An interactive flip-book / flashcard style viewer built with Jekyll + client-sid
 ### Local Development
 
 ```bash
-bundle exec jekyll serve
+jekyll serve
 Visit http://localhost:4000 to try locally.
 
 Make sure your images and YAML files are correctly linked.
