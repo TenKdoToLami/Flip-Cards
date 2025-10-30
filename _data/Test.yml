@@ -11,9 +11,9 @@ pages:
         invalid image
   - left:
       text: |
-        just text no img
+        just text no img and long text and img on right
     right:
-      image: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dui ex. Donec mollis, mi in tincidunt dapibus, tortor justo hendrerit lectus, suscipit lobortis erat arcu sit amet nisi. Nulla facilisi. Sed in massa nulla. Morbi malesuada semper lorem, nec ultricies lectus efficitur dapibus. Phasellus nec mauris tellus. Nulla sollicitudin suscipit velit, ac elementum magna viverra in. Aenean imperdiet velit risus, non cursus neque malesuada non.
+      image: 1.jpg
       text: |
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in dui ex. Donec mollis, mi in tincidunt dapibus, tortor justo hendrerit lectus, suscipit lobortis erat arcu sit amet nisi. Nulla facilisi. Sed in massa nulla. Morbi malesuada semper lorem, nec ultricies lectus efficitur dapibus. Phasellus nec mauris tellus. Nulla sollicitudin suscipit velit, ac elementum magna viverra in. Aenean imperdiet velit risus, non cursus neque malesuada non.
   - left:
