@@ -178,37 +178,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function startAutoScroll() {
-  if (!currentData || isAutoScrolling) return;
-  isAutoScrolling = true;
+    if (!currentData || isAutoScrolling) return;
+    isAutoScrolling = true;
 
-  // Set pause SVG
-  autoBtn.innerHTML = `
+    // Set pause SVG
+    autoBtn.innerHTML = `
     <svg viewBox="0 0 24 24" width="100%" height="100%">
       <path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/>
     </svg>
   `;
 
-  autoScrollInterval = setInterval(() => {
-    if (currentPage < currentData.pages.length - 1) {
-      currentPage++;
-      renderPage(currentPage);
-    } else {
-      stopAutoScroll();
-    }
-  }, 5000); // INTERVAL
-}
+    autoScrollInterval = setInterval(() => {
+      if (currentPage < currentData.pages.length - 1) {
+        currentPage++;
+        renderPage(currentPage);
+      } else {
+        stopAutoScroll();
+      }
+    }, 5000); // INTERVAL
+  }
 
-function stopAutoScroll() {
-  if (!isAutoScrolling) return;
-  clearInterval(autoScrollInterval);
-  isAutoScrolling = false;
+  function stopAutoScroll() {
+    if (!isAutoScrolling) return;
+    clearInterval(autoScrollInterval);
+    isAutoScrolling = false;
 
-  // Set play SVG
-  autoBtn.innerHTML = `
+    // Set play SVG
+    autoBtn.innerHTML = `
     <svg viewBox="0 0 24 24" width="100%" height="100%">
       <path fill="currentColor" d="M8 5v14l11-7z"/>
     </svg>
   `;
-}
+  }
 
 });
