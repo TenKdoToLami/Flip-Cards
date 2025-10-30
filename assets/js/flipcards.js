@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const flipcardContainer = document.getElementById('flipcard-container');
   const links = document.querySelectorAll('.flipcard-link');
 
   let currentPage = -1;
   let currentData = null;
+  let autoScrollInterval = null;
+  let isAutoScrolling = false;
 
   function loadFlipcardSet(setName, pageIndex = -1) {
     const flipcardData = ALL_FLIPCARDS[setName];
@@ -48,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const page = currentData.pages[pageIndex];
-
     html = `
       <div class="flipcard left" id="left-page">
         ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
@@ -66,12 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('left-page').onclick = () => {
       if (currentPage > 0) currentPage--;
       else if (currentPage === 0) currentPage = -1;
+      stopAutoScroll();
       renderPage(currentPage);
     };
     document.getElementById('right-page').onclick = () => {
       if (currentPage < currentData.pages.length - 1) currentPage++;
+      stopAutoScroll();
       renderPage(currentPage);
     };
+
     document.querySelectorAll('.flipcard .text').forEach(fitTextToContainer);
   }
 
@@ -90,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
       span.style.fontSize = `${fontSize}px`;
     }
   }
-
 
 
   function updateHash(setName, pageIndex) {
@@ -129,12 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebar.classList.toggle('scrollable-top', scrollTop > 0);
     sidebar.classList.toggle('scrollable-bottom', scrollTop + clientHeight < scrollHeight);
   }
-
+  sidebarList?.addEventListener('scroll', updateSidebarArrows);
   updateSidebarArrows();
-
-  sidebarList.addEventListener('scroll', updateSidebarArrows);
-
-
 
   handleHashChange();
   window.addEventListener('hashchange', handleHashChange);
@@ -143,31 +141,74 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('prev-page-btn');
   const nextBtn = document.getElementById('next-page-btn');
   const lastBtn = document.getElementById('last-page-btn');
+  const autoBtn = document.getElementById('auto-scroll-btn');
 
   firstBtn.addEventListener('click', () => {
     if (!currentData) return;
+    stopAutoScroll();
     currentPage = 0;
     renderPage(currentPage);
   });
 
   prevBtn.addEventListener('click', () => {
     if (!currentData) return;
+    stopAutoScroll();
     if (currentPage > 0) currentPage--;
-    else if (currentPage === 0) currentPage = -1; // go to cover
+    else if (currentPage === 0) currentPage = -1;
     renderPage(currentPage);
   });
 
   nextBtn.addEventListener('click', () => {
     if (!currentData) return;
+    stopAutoScroll();
     if (currentPage < currentData.pages.length - 1) currentPage++;
     renderPage(currentPage);
   });
 
   lastBtn.addEventListener('click', () => {
     if (!currentData) return;
+    stopAutoScroll();
     currentPage = currentData.pages.length - 1;
     renderPage(currentPage);
   });
 
+  autoBtn.addEventListener('click', () => {
+    if (isAutoScrolling) stopAutoScroll();
+    else startAutoScroll();
+  });
+
+  function startAutoScroll() {
+  if (!currentData || isAutoScrolling) return;
+  isAutoScrolling = true;
+
+  // Set pause SVG
+  autoBtn.innerHTML = `
+    <svg viewBox="0 0 24 24" width="100%" height="100%">
+      <path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+    </svg>
+  `;
+
+  autoScrollInterval = setInterval(() => {
+    if (currentPage < currentData.pages.length - 1) {
+      currentPage++;
+      renderPage(currentPage);
+    } else {
+      stopAutoScroll();
+    }
+  }, 5000); // INTERVAL
+}
+
+function stopAutoScroll() {
+  if (!isAutoScrolling) return;
+  clearInterval(autoScrollInterval);
+  isAutoScrolling = false;
+
+  // Set play SVG
+  autoBtn.innerHTML = `
+    <svg viewBox="0 0 24 24" width="100%" height="100%">
+      <path fill="currentColor" d="M8 5v14l11-7z"/>
+    </svg>
+  `;
+}
 
 });
