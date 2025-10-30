@@ -163,11 +163,32 @@ body {
 }
 
 .flipcard .text span {
-	display: block;
-	line-height: 1.3;
-	text-align: center;
-	word-break: break-word;
+  display: block;
+  line-height: 1.3;
+  text-align: center;
+  word-break: break-word;
+
+  background: radial-gradient(circle at center, #ffffff 0%, #aaaaaa 30%, #999999 40%, #888888 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: text-pulse 2s infinite ease-in-out;
 }
+
+@keyframes text-pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+
+
 
 .flipcard:hover {
 	transform: scale(1.05);
