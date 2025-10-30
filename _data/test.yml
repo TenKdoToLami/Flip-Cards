@@ -1,0 +1,14 @@
+title: BIG TEST
+cover: test.cover.png
+pages:
+  - left:
+      image: img.left.1
+      text: |
+        img text left <br> test
+    right:
+      image: img.righ.2
+  - left:
+      text: |
+        'das
+    right:
+      image: eqw qdasd dsa

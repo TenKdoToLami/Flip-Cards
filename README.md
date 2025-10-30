@@ -83,7 +83,6 @@ All internal paths and hash links are relative and should work out-of-the-box.
 Example za.yml:
 
 yaml
-Copy code
 title: Za introduction
 cover: cover.png
 pages:
