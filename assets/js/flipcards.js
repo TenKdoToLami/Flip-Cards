@@ -211,4 +211,34 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   }
 
+  document.addEventListener('keydown', (e) => {
+    if (!currentData) return;
+
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'd':
+      case 'D':
+        if (currentPage < currentData.pages.length - 1) {
+          currentPage++;
+          stopAutoScroll();
+          renderPage(currentPage);
+        }
+        break;
+
+      case 'ArrowLeft':
+      case 'a':
+      case 'A':
+        if (currentPage > 0) {
+          currentPage--;
+          stopAutoScroll();
+          renderPage(currentPage);
+        } else if (currentPage === 0) {
+          currentPage = -1;
+          stopAutoScroll();
+          renderPage(currentPage);
+        }
+        break;
+    }
+  });
+
 });

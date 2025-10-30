@@ -12,13 +12,14 @@ title: Flip Cards
 <div id="flipcard-container">
 <!-- Flipcards will be rendered here -->
 </div>
-  <div id="media-controls">
 
-    <button id="first-page-btn">
-  		<svg viewBox="0 0 24 24" width="100%" height="100%">
-  			<path fill="currentColor" d="M18 6v12l-8-6zM6 6h2v12H6z" />
-  		</svg>
-  	</button>
+<div id="media-controls">
+
+	<button id="first-page-btn">
+		<svg viewBox="0 0 24 24" width="100%" height="100%">
+			<path fill="currentColor" d="M18 6v12l-8-6zM6 6h2v12H6z" />
+		</svg>
+	</button>
 
   	<button id="prev-page-btn">
   		<svg viewBox="0 0 24 24" width="100%" height="100%">
@@ -44,7 +45,6 @@ title: Flip Cards
   		</svg>
   	</button>
 
-  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
