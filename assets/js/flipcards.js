@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     html = `
       <div class="flipcard left" id="left-page">
         ${page.left.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.left.image}" />` : ''}
-        <div class="text">${page.left.text || ''}</div>
-        <div class="page-number">${2*pageIndex + 1}</div>
+        <div class="text"><span>${page.left.text || ''}</span></div>
+        <div class="page-number">${2 * pageIndex + 1}</div>
       </div>
       <div class="flipcard right" id="right-page">
         ${page.right.image ? `<img src="${BASE_URL}assets/images/${folder}/${page.right.image}" />` : ''}
-        <div class="text">${page.right.text || ''}</div>
-        <div class="page-number">${2*pageIndex + 2}</div>
+        <div class="text"><span>${page.right.text || ''}</span></div>
+        <div class="page-number">${2 * pageIndex + 2}</div>
       </div>
     `;
     flipcardContainer.innerHTML = html;
@@ -72,7 +72,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentPage < currentData.pages.length - 1) currentPage++;
       renderPage(currentPage);
     };
+    document.querySelectorAll('.flipcard .text').forEach(fitTextToContainer);
   }
+
+  function fitTextToContainer(container) {
+    const span = container.querySelector('span');
+    if (!span) return;
+
+    span.style.fontSize = '';
+    span.style.whiteSpace = 'normal';
+
+    let fontSize = parseFloat(window.getComputedStyle(span).fontSize);
+    const maxHeight = container.clientHeight * 0.9;
+
+    while (span.scrollHeight > maxHeight && fontSize > 10) {
+      fontSize -= 1;
+      span.style.fontSize = `${fontSize}px`;
+    }
+  }
+
+
 
   function updateHash(setName, pageIndex) {
     const safeSetName = encodeURIComponent(setName);
@@ -121,34 +140,34 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('hashchange', handleHashChange);
 
   const firstBtn = document.getElementById('first-page-btn');
-const prevBtn = document.getElementById('prev-page-btn');
-const nextBtn = document.getElementById('next-page-btn');
-const lastBtn = document.getElementById('last-page-btn');
+  const prevBtn = document.getElementById('prev-page-btn');
+  const nextBtn = document.getElementById('next-page-btn');
+  const lastBtn = document.getElementById('last-page-btn');
 
-firstBtn.addEventListener('click', () => {
-  if (!currentData) return;
-  currentPage = 0;
-  renderPage(currentPage);
-});
+  firstBtn.addEventListener('click', () => {
+    if (!currentData) return;
+    currentPage = 0;
+    renderPage(currentPage);
+  });
 
-prevBtn.addEventListener('click', () => {
-  if (!currentData) return;
-  if (currentPage > 0) currentPage--;
-  else if (currentPage === 0) currentPage = -1; // go to cover
-  renderPage(currentPage);
-});
+  prevBtn.addEventListener('click', () => {
+    if (!currentData) return;
+    if (currentPage > 0) currentPage--;
+    else if (currentPage === 0) currentPage = -1; // go to cover
+    renderPage(currentPage);
+  });
 
-nextBtn.addEventListener('click', () => {
-  if (!currentData) return;
-  if (currentPage < currentData.pages.length - 1) currentPage++;
-  renderPage(currentPage);
-});
+  nextBtn.addEventListener('click', () => {
+    if (!currentData) return;
+    if (currentPage < currentData.pages.length - 1) currentPage++;
+    renderPage(currentPage);
+  });
 
-lastBtn.addEventListener('click', () => {
-  if (!currentData) return;
-  currentPage = currentData.pages.length - 1;
-  renderPage(currentPage);
-});
+  lastBtn.addEventListener('click', () => {
+    if (!currentData) return;
+    currentPage = currentData.pages.length - 1;
+    renderPage(currentPage);
+  });
 
 
 });
