@@ -21,7 +21,11 @@ pages:
       image: 3.png
     right:
       text: |
-        Za channels the shadows… when he feels like it.
+        Za channels the shadows
+        <br>
+        … 
+        <br>
+        when he feels like it.
         <br>
         (He rarely feels like it.)
   - left:
@@ -32,7 +36,7 @@ pages:
         <br>
         When the mana cookie supply runs critically low and even he has to venture into the blinding daylight.
         <br>
-        He's not happy about it."
+        He's not happy about it.
   - left:
       image: 4.png
     right:
@@ -64,7 +68,9 @@ pages:
         <br>
         shiny,
         <br>
-        and helpful.
+        and
+        <br>
+        helpful.
         <br>
         Utterly horrifying.
   - left:
@@ -81,9 +87,12 @@ pages:
     right:
       text: |
         This is Ka.
+        <br>
         Za’s shadow priest friend.
         <br>
-        They mostly just sit together in silence, judging everyone.
+        They mostly just sit together in silence, 
+        <br>
+        judging everyone.
         <br>
         It's a very deep friendship.
   - left:
@@ -92,7 +101,11 @@ pages:
       text: |
         Za is incredibly skilled.
         <br>
-        He once soloed a raid boss because it interrupted his nap and he got... mildly annoyed.
+        He once soloed a raid boss because it interrupted his nap and he got
+        <br>
+        ...
+        <br>
+        mildly annoyed.
   - left:
       image: 10.png
     right:
@@ -103,7 +116,9 @@ pages:
         <br>
         in silence,
         <br>
-        in style...
+        in style
+        <br>
+        ...
         <br>
         His work here is done.
         <br>
