@@ -3,14 +3,6 @@ cover: cover.png
 pages:
   - left:
       image: 1.png
-      text: |
-        This is Za.
-        <br>
-        Shadow priest.
-        <br>
-        Slothful.
-        <br>
-        Master of slacking.
     right:
       text: |
         This is Za.
