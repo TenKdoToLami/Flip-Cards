@@ -1,0 +1,53 @@
+title: Still Coding
+cover: cover.png
+pages:
+  - left:
+      image: 1.png
+    right:
+      text: |
+        My code usually runs on hopes and dreams<br>...<br>mostly dreams.
+  - left:
+      image: 2.png
+    right:
+      text: |
+        Found a bug!<br>It was me.<br>I was the bug.
+  - left:
+      image: 3.png
+    right:
+      text: |
+        Debugging feels like being a detective,<br>but the crime is my own doing.
+  - left:
+      image: 4.png
+    right:
+      text: |
+        That moment when you fix one bug<br>and<br>ten more appear.
+  - left:
+      image: 5.png
+    right:
+      text: |
+        My relationship status with my code:<br>it's complicated.
+  - left:
+      image: 6.png
+    right:
+      text: |
+        Coffee:<br>because adulting is hard,<br>and coding is harder.
+  - left:
+      image: 7.png
+    right:
+      text: |
+        When the code finally works,<br>and you have no idea why.
+  - left:
+      image: 8.png
+    right:
+      text: |
+        Pretending I know what I'm doing since day one.
+  - left:
+      image: 9.png
+    right:
+      text: |
+        My brain trying to process a new coding concept.
+  - left:
+      image: 10.png
+    right:
+      text: |
+        The joy of finally closing all those error messages!
